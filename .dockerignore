@@ -1,0 +1,10 @@
+**
+!Dockerfile
+!requirements.txt
+!requirements-postgres.txt
+!app/
+!app/**
+!tests/
+!tests/**
+**/__pycache__/
+**/*.pyc

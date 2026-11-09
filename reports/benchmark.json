@@ -1,0 +1,123 @@
+{
+  "recorded_at_utc": "2026-11-01T09:42:50.957839+00:00",
+  "python": "3.12.8",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "database": "PostgreSQL",
+  "source_sha256": "ea6e7aafaf755a5a1f6058e91978ab8ca89c5170c9b264679da974a99d3025f7",
+  "workload": {
+    "base_url": "http://127.0.0.1:8000",
+    "rounds": 5,
+    "requests": 100,
+    "concurrency": 5,
+    "warmup": 10,
+    "output": "reports/benchmark.json"
+  },
+  "products": 100,
+  "all_responses_equal": true,
+  "measured_requests": 1000,
+  "median_round_results": {
+    "n_plus_one": {
+      "avg_ms": 195.06997900549322,
+      "p95_ms": 288.1853000726551,
+      "requests_per_second": 25.076053161270607
+    },
+    "batch": {
+      "avg_ms": 154.87275898922235,
+      "p95_ms": 235.13590008951724,
+      "requests_per_second": 31.605075117557504
+    }
+  },
+  "mean_latency_reduction_pct": 20.606563973198,
+  "rounds": [
+    {
+      "round": 1,
+      "strategy": "n_plus_one",
+      "requests": 100,
+      "avg_ms": 155.2253279951401,
+      "p95_ms": 225.8654001634568,
+      "requests_per_second": 31.660735714662934,
+      "elapsed_seconds": 3.158486299915239
+    },
+    {
+      "round": 1,
+      "strategy": "batch",
+      "requests": 100,
+      "avg_ms": 129.89709198474884,
+      "p95_ms": 228.23660005815327,
+      "requests_per_second": 37.32945385706108,
+      "elapsed_seconds": 2.6788498000241816
+    },
+    {
+      "round": 2,
+      "strategy": "batch",
+      "requests": 100,
+      "avg_ms": 116.47482399828732,
+      "p95_ms": 200.0712000299245,
+      "requests_per_second": 41.96850767081893,
+      "elapsed_seconds": 2.3827390000224113
+    },
+    {
+      "round": 2,
+      "strategy": "n_plus_one",
+      "requests": 100,
+      "avg_ms": 187.0456889946945,
+      "p95_ms": 288.1853000726551,
+      "requests_per_second": 26.343652738012395,
+      "elapsed_seconds": 3.7959808001760393
+    },
+    {
+      "round": 3,
+      "strategy": "n_plus_one",
+      "requests": 100,
+      "avg_ms": 195.06997900549322,
+      "p95_ms": 278.0388998799026,
+      "requests_per_second": 25.076053161270607,
+      "elapsed_seconds": 3.9878684000577778
+    },
+    {
+      "round": 3,
+      "strategy": "batch",
+      "requests": 100,
+      "avg_ms": 175.1362380059436,
+      "p95_ms": 283.3519000560045,
+      "requests_per_second": 28.04052371585558,
+      "elapsed_seconds": 3.5662672000471503
+    },
+    {
+      "round": 4,
+      "strategy": "batch",
+      "requests": 100,
+      "avg_ms": 175.60709100216627,
+      "p95_ms": 309.0043000411242,
+      "requests_per_second": 27.60821197429069,
+      "elapsed_seconds": 3.62211070000194
+    },
+    {
+      "round": 4,
+      "strategy": "n_plus_one",
+      "requests": 100,
+      "avg_ms": 238.19192299386486,
+      "p95_ms": 317.41779996082187,
+      "requests_per_second": 20.530443003162922,
+      "elapsed_seconds": 4.870815499918535
+    },
+    {
+      "round": 5,
+      "strategy": "n_plus_one",
+      "requests": 100,
+      "avg_ms": 257.7637420059182,
+      "p95_ms": 382.64489988796413,
+      "requests_per_second": 19.16696131125652,
+      "elapsed_seconds": 5.21731109987013
+    },
+    {
+      "round": 5,
+      "strategy": "batch",
+      "requests": 100,
+      "avg_ms": 154.87275898922235,
+      "p95_ms": 235.13590008951724,
+      "requests_per_second": 31.605075117557504,
+      "elapsed_seconds": 3.1640488000120968
+    }
+  ]
+}

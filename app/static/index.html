@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trace / API Performance Profiler</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/dashboard.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="/">▥ <strong>trace</strong><span>API PROFILER</span></a><nav><span id="database">Connecting…</span><a href="/docs" target="_blank" rel="noopener">API docs ↗</a></nav></header>
+  <main>
+    <div class="heading"><div><p class="eyebrow">OBSERVE / INVESTIGATE / IMPROVE</p><h1>Performance, in focus.</h1><p class="muted">Follow each request. Find the expensive work.</p></div><div class="live"><span id="status">Connecting</span><button id="refresh" class="secondary">Refresh</button></div></div>
+    <div id="notice" role="status" aria-live="polite" hidden></div>
+    <section class="stats" aria-label="Request overview">
+      <article><p>Requests in window</p><strong id="total">—</strong><span>Latest 10,000 · one process</span></article>
+      <article><p>Average latency</p><strong id="average">—</strong><span>Server-observed duration</span></article>
+      <article><p>Error rate</p><strong id="errors">—</strong><span>4xx and 5xx responses</span></article>
+      <article><p>Database time</p><strong id="sql">—</strong><span>Average per request</span></article>
+    </section>
+    <section class="panel playground"><div><p class="eyebrow">EXPERIMENT LAB</p><h2>Make the bottleneck visible.</h2><p>Generate real local requests, then compare repeated queries with a batched fetch.</p></div><div class="actions"><button id="traffic">Generate traffic</button><button id="compare" class="secondary">Compare query strategies</button></div><p id="experiment" class="experiment" aria-live="polite">Traffic includes normal requests, an artificial delay, and an intentional 503.</p></section>
+    <section class="panel"><div class="panel-head"><div><h2>Endpoint performance</h2><p>Sorted by p95 latency · catalog strategies measured separately</p></div><label>Filter endpoints <input id="filter" type="search" placeholder="e.g. catalog" autocomplete="off"></label></div><div class="table-wrap"><table><thead><tr><th scope="col">Endpoint / strategy</th><th scope="col">Requests</th><th scope="col">Avg</th><th scope="col">p95</th><th scope="col">Errors</th><th scope="col">Queries / req</th><th scope="col">DB time / req</th></tr></thead><tbody id="endpoints"></tbody></table></div><p id="empty" class="empty">No requests yet. Generate traffic to start investigating.</p></section>
+    <div class="bottom-grid"><section class="panel"><div class="panel-head"><div><h2>Recent request latency</h2><p>Latest 60 requests · oldest to newest</p></div></div><div id="chart" class="chart" role="img" aria-label="No request timings available"></div><div class="legend"><span>■ Response time</span><span id="chart-scale">No samples</span></div></section><section class="panel"><div class="panel-head"><div><h2>Investigation notes</h2><p>Evidence to guide your next check</p></div></div><ul id="insights" class="insights"><li>Generate requests to reveal patterns.</li></ul></section></div>
+    <footer><span id="retention">Local development · checking history storage</span><span id="updated">Waiting for first update</span></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,39 @@
+services:
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:${APP_PORT:-8001}:8000"
+    environment:
+      DATABASE_URL: postgresql://profiler:local-profiler-dev@db:5432/profiler
+      METRICS_PATH: /app/data/metrics.db
+    volumes:
+      - metrics_data:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      start_period: 15s
+      retries: 6
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: profiler
+      POSTGRES_PASSWORD: local-profiler-dev
+      POSTGRES_DB: profiler
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - profiler_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U profiler -d profiler"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+volumes:
+  profiler_data:
+  metrics_data:
